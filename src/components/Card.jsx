@@ -64,7 +64,7 @@ const Card = () => {
         {!isLoading && tasks.map((task, index) => (
           <div
             key={task.id}
-            className="text-2xl flex flex-wrap sm:flex-nowrap items-center border p-3 rounded-md bg-lgrey w-4/5"
+            className="text-lg sm:text-2xl flex items-center gap-2 border p-3 rounded-md bg-lgrey w-full max-w-[500px]"
           >
             <input
               type="checkbox"
@@ -83,7 +83,7 @@ const Card = () => {
               onClick={() => deleteTask(task.id)}
               className="text-grey hover:text-red-700 ml-2"
             >
-              <Trash2 size={28} className="sm:size-[40px]" />
+              <Trash2 className="w-6 h-6 sm:w-10 sm:h-10"" />
             </button>
           </div>
         ))}
