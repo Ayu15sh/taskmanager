@@ -14,7 +14,7 @@ const MAX_TASKS = 5;
 
 const Card = () => {
   const [tasks, setTasks] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); 
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, 'tasks'), (snapshot) => {
@@ -23,7 +23,6 @@ const Card = () => {
         id: doc.id,
       }));
 
-      
       fetchedTasks.sort((a, b) => a.timestamp - b.timestamp);
 
       setTasks(fetchedTasks);
@@ -60,12 +59,12 @@ const Card = () => {
   };
 
   return (
-    <div className="bg-grey shadow-lg rounded-xl p-10 w-[600px] flex flex-col  justify-center items-center gap-6">
-      <div className="flex flex-col gap-4 w-full  h-auto items-center mt-4">
+    <div className="bg-grey shadow-lg rounded-xl p-6 sm:p-10 w-full max-w-xl flex flex-col items-center gap-6">
+      <div className="flex flex-col gap-4 w-full h-auto items-center">
         {!isLoading && tasks.map((task, index) => (
           <div
             key={task.id}
-            className="text-2xl flex items-center border p-3 rounded-md bg-lgrey w-4/5"
+            className="text-lg sm:text-2xl flex items-center border p-2 sm:p-3 rounded-md bg-lgrey w-full"
           >
             <input
               type="checkbox"
@@ -78,13 +77,13 @@ const Card = () => {
               placeholder={`Task ${index + 1}`}
               value={task.text}
               onChange={(e) => updateTaskText(task.id, e.target.value)}
-              className="flex-grow outline-none px-2 text-2xl font-inter bg-transparent"
+              className="flex-grow outline-none px-2 text-base sm:text-2xl font-inter bg-transparent"
             />
             <button
               onClick={() => deleteTask(task.id)}
               className="text-grey hover:text-red-700 ml-2"
             >
-              <Trash2 size={40} />
+              <Trash2 size={28} className="sm:size-10" />
             </button>
           </div>
         ))}
@@ -93,10 +92,9 @@ const Card = () => {
       {tasks.length < MAX_TASKS && (
         <button
           onClick={addTask}
-          className="bg-slate text-lgrey py-2 px-4 rounded-2xl w-1/2 flex items-center justify-center font-inter mt-4 transition-all duration-300
-             hover:bg-gradient-to-r hover:from-yellow-400 hover:via-orange-500 hover:to-pink-500 hover:text-white"
+          className="bg-slate text-lgrey py-2 px-4 rounded-2xl w-full sm:w-1/2 flex items-center justify-center font-inter mt-4 transition-all duration-300 hover:bg-gradient-to-r hover:from-yellow-400 hover:via-orange-500 hover:to-pink-500 hover:text-white"
         >
-          <Plus size={40} className="mr-2" /> Add Task
+          <Plus size={28} className="mr-2 sm:size-10" /> Add Task
         </button>
       )}
     </div>
