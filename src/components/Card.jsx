@@ -83,7 +83,7 @@ const Card = () => {
               onClick={() => deleteTask(task.id)}
               className="text-grey hover:text-red-700 ml-2"
             >
-              <Trash2 size={28} className="sm:size-10" />
+              <Trash2 size={28} className="sm:size-[40px]" />
             </button>
           </div>
         ))}
