@@ -64,7 +64,7 @@ const Card = () => {
         {!isLoading && tasks.map((task, index) => (
           <div
             key={task.id}
-            className="text-lg sm:text-2xl flex items-center border p-2 sm:p-3 rounded-md bg-lgrey w-full"
+            className="text-2xl flex flex-wrap sm:flex-nowrap items-center border p-3 rounded-md bg-lgrey w-4/5"
           >
             <input
               type="checkbox"
